@@ -1,722 +1,409 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Time</title>
+  <link rel="icon" type="image/png"
+    href="data:image/png;base64,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">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: math;
+      font-size: 4vmin;
+      min-height: 100vh;
+      display: grid;
+      overflow: hidden;
+      place-items: center;
+      background: linear-gradient(-45deg, #c4d2ef, #dfe6f6);
+    }
+
+    .clock {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 8vmin;
+      position: relative;
+      padding: 0 4vmin;
+    }
+
+    .time-unit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 4vmin;
+      align-items: start;
+    }
+
+    .strip {
+      transition: transform 500ms ease-in-out;
+      border-radius: 1.333333333333333vmin;
+      background-color: #dfe6f6;
+      box-shadow: -1vmin -1vmin 2vmin -0.5vmin #f9fbfd, 1vmin 1vmin 2vmin #a9bee8;
+    }
+
+    .number {
+      user-select: none;
+      width: 8vmin;
+      height: 8vmin;
+      display: grid;
+      place-items: center;
+      color: #f9fbfd;
+      transition: all 500ms 100ms ease;
+      border-radius: 50%;
+    }
+
+    .number.pop {
+      color: #3e6ccb;
+      font-weight: bold;
+      transform: scale(1.3);
+      background-color: #dfe6f6;
+      box-shadow: -1vmin -1vmin 2vmin -0.5vmin #f9fbfd, 1vmin 1vmin 2vmin #a9bee8;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(196, 210, 239, 0);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: background 500ms ease;
+    }
+
+    .modal.show {
+      background: rgba(196, 210, 239, 0.8);
+    }
+
+    .modal-content {
+      background: #dfe6f6;
+      padding: 4vmin;
+      border-radius: 2vmin;
+      box-shadow: -1vmin -1vmin 2vmin -0.5vmin #f9fbfd,
+        1vmin 1vmin 2vmin #a9bee8;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 500ms ease;
+    }
+
+    .modal.show .modal-content {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .modal h2 {
+      color: #3e6ccb;
+      margin-bottom: 3vmin;
+      font-size: 3vmin;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2vmin;
+    }
+
+    .input-group input {
+      background: #dfe6f6;
+      border: none;
+      padding: 1.5vmin;
+      border-radius: 1vmin;
+      font-size: 2.5vmin;
+      text-align: center;
+      color: #3e6ccb;
+      box-shadow: inset -0.5vmin -0.5vmin 1vmin -0.25vmin #f9fbfd,
+        inset 0.5vmin 0.5vmin 1vmin #a9bee8;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+
+    .input-group input:focus {
+      outline: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 2vmin;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 1vmin 3vmin;
+      border: none;
+      border-radius: 1vmin;
+      background: #dfe6f6;
+      color: #3e6ccb;
+      font-size: 2vmin;
+      cursor: pointer;
+      box-shadow: -0.5vmin -0.5vmin 1vmin -0.25vmin #f9fbfd,
+        0.5vmin 0.5vmin 1vmin #a9bee8;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+      box-shadow: inset -0.5vmin -0.5vmin 1vmin -0.25vmin #f9fbfd,
+        inset 0.5vmin 0.5vmin 1vmin #a9bee8;
+    }
+
+    .input-group input::-webkit-outer-spin-button,
+    .input-group input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+  <div class="clock">
+    <div class="time-unit hours">
+      <div class="strip">
+        <div class="number">0</div>
+        <div class="number">1</div>
+        <div class="number">2</div>
+      </div>
+      <div class="strip">
+        <div class="number">0</div>
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+      </div>
+    </div>
+    <div class="time-unit minutes">
+      <div class="strip">
+        <div class="number">0</div>
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+      </div>
+      <div class="strip">
+        <div class="number">0</div>
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+      </div>
+    </div>
+    <div class="time-unit seconds">
+      <div class="strip">
+        <div class="number">0</div>
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+      </div>
+      <div class="strip">
+        <div class="number">0</div>
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>垂直偏移设置</h2>
+      <div class="input-group">
+        <input type="number" id="offsetInput" value="20">
+        <div class="buttons">
+          <button class="btn confirm">确定</button>
+          <button class="btn cancel">取消</button>
         </div>
-    </header>
+      </div>
+    </div>
+  </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
-        </div>
-    </section>
+  <script>
+    class DigitalClock {
+      constructor() {
+        this.config = {
+          numberSize: 8,
+          verticalOffset: this.loadVerticalOffset(),
+          animationDuration: 950
+        };
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        this.strips = [...document.querySelectorAll('.strip')];
+        this.init();
+        this.initKeyboardListener();
+      }
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      loadVerticalOffset() {
+        const savedOffset = localStorage.getItem('clockVerticalOffset');
+        return savedOffset !== null ? Number(savedOffset) : 20;
+      }
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
+      saveVerticalOffset(value) {
+        localStorage.setItem('clockVerticalOffset', value);
+      }
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+      init() {
+        // this.updateClock();
+        setInterval(() => this.updateClock(), 1000);
+      }
 
-    <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
+      highlightDigit(stripIndex, digit) {
+        const numberElement = this.strips[stripIndex].querySelector(
+          `.number:nth-of-type(${digit + 1})`
+        );
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
+        numberElement.classList.add('pop');
+        setTimeout(() => {
+          numberElement.classList.remove('pop');
+        }, this.config.animationDuration);
+      }
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
+      updateStripPair(stripIndex, number) {
+        const firstDigit = Math.floor(number / 10);
+        const secondDigit = number % 10;
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        const transform = (digit) =>
+          `translateY(calc(${digit * -this.config.numberSize}vmin + ${this.config.verticalOffset}vmin))`;
+
+        this.strips[stripIndex].style.transform = transform(firstDigit);
+        this.highlightDigit(stripIndex, firstDigit);
+
+        this.strips[stripIndex + 1].style.transform = transform(secondDigit);
+        this.highlightDigit(stripIndex + 1, secondDigit);
+      }
+
+      updateClock() {
+        const now = new Date();
+
+        this.updateStripPair(0, now.getHours());
+        this.updateStripPair(2, now.getMinutes());
+        this.updateStripPair(4, now.getSeconds());
+      }
+
+      initKeyboardListener() {
+        const modal = document.querySelector('.modal');
+        const input = document.querySelector('#offsetInput');
+        const confirmBtn = document.querySelector('.btn.confirm');
+        const cancelBtn = document.querySelector('.btn.cancel');
+
+        const showModal = () => {
+          modal.style.display = 'flex';
+          // 强制重绘
+          modal.offsetHeight;
+          modal.classList.add('show');
+        };
+
+        const hideModal = () => {
+          modal.classList.remove('show');
+          setTimeout(() => {
+            modal.style.display = 'none';
+          }, 500);
+        };
+
+        const handleConfirm = () => {
+          const newOffset = Number(input.value);
+          if (!isNaN(newOffset)) {
+            this.config.verticalOffset = newOffset;
+            this.saveVerticalOffset(newOffset);
+            this.updateClock();
+          }
+          hideModal();
+        };
+
+        // 调整偏移值的函数
+        const adjustOffset = (delta) => {
+          this.config.verticalOffset += delta;
+          this.saveVerticalOffset(this.config.verticalOffset);
+          this.updateClock();
+        };
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === '/') {
+            e.preventDefault();
+            input.value = this.config.verticalOffset;
+            showModal();
+            input.focus();
+            return;
+          }
+
+          // 方向键调节，确保弹窗未显示时才响应方向键
+          if (modal.style.display !== 'flex') {
+            switch (e.key) {
+              case 'ArrowUp':
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
-                }
-            });
+                adjustOffset(-1);
+                break;
+              case 'ArrowDown':
+                e.preventDefault();
+                adjustOffset(1);
+                break;
+            }
+          }
         });
-    </script>
+
+        // 监听输入框的回车事件
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleConfirm();
+          }
+        });
+
+        confirmBtn.addEventListener('click', handleConfirm);
+
+        cancelBtn.addEventListener('click', () => {
+          hideModal();
+        });
+
+        // 点击模态框外部关闭
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            hideModal();
+          }
+        });
+
+        // 按ESC键关闭
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && modal.style.display === 'flex') {
+            hideModal();
+          }
+        });
+      }
+    }
+
+    // 初始化时钟
+    new DigitalClock();
+  </script>
 </body>
 
 </html>
